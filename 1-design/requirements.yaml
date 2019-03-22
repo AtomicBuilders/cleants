@@ -1,4 +1,4 @@
-# legacy
+# 0 - legacy
 Scenario: Should find a guitar by its serial number
   Given: An inventory of guitars
   When: We search for serialnumber
@@ -9,7 +9,7 @@ Scenario: Should search for guitars based on criteria
   When: We search for a multiple criteria
   Then: We get a list of guitarrs matching criteria
 ---
-# modified
+# 1 - modified -> 2 - better
 Scenario: Should search for guitars based on optional criteria
   Given: An inventory of guitars
   When: We search for a criteria
@@ -20,7 +20,7 @@ Scenario: Should search for guitars avoiding user mistakes
   When: We search for criteria
   Then: We get a list of guitars matching criteria
 ---
-# better
+# 3- better
 Scenario: Should have numberOfStrings in specs
   Given: An inventory of guitars
   When: We have 6-string or 12-string guitars
