@@ -1,6 +1,6 @@
 import { Builders, Guitar, Inventory, Types } from './modified';
 
-describe('Legacy guitar inventory', () => {
+describe('Modified guitar inventory', () => {
   const inventory = new Inventory();
   beforeAll(() => {
     inventory.addGuitar('123-456', 1000, Builders.Fender, 'Strotocaster', Types.Electric);

@@ -3,7 +3,7 @@ Scenario: Should find a guitar by its serial number
   Given: An inventory of guitars
   When: We search for serialnumber
   Then: We get a guitarr or null
----
+
 Scenario: Should search for guitars based on criteria
   Given: An inventory of guitars
   When: We search for a multiple criteria
@@ -14,8 +14,19 @@ Scenario: Should search for guitars based on optional criteria
   Given: An inventory of guitars
   When: We search for a criteria
   Then: We get a list of guitars matching criteria
----
+
 Scenario: Should search for guitars avoiding user mistakes
   Given: An inventory of guitars
   When: We search for criteria
+  Then: We get a list of guitars matching criteria
+---
+# better
+Scenario: Should have numberOfStrings in specs
+  Given: An inventory of guitars
+  When: We have 6-string or 12-string guitars
+  Then: We can add them
+
+Scenario: Should search for number of strings
+  Given: An inventory of guitars
+  When: We search for 6-string or 12-string guitars
   Then: We get a list of guitars matching criteria
