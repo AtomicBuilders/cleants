@@ -1,25 +1,19 @@
 export class Guitar {
-  constructor(
+  public constructor(
     public readonly serialNumber: string,
     public readonly price: number,
     public readonly builder: string,
     public readonly model: string,
-    public readonly type: string
+    public readonly type: string,
   ) {}
 }
 
 export class Inventory {
   private guitars: Guitar[];
-  constructor() {
+  public constructor() {
     this.guitars = [];
   }
-  public addGuitar(
-    serialNumber: string,
-    price: number,
-    builder: string,
-    model: string,
-    type: string
-  ) {
+  public addGuitar(serialNumber: string, price: number, builder: string, model: string, type: string): void {
     const guitar = new Guitar(serialNumber, price, builder, model, type);
     this.guitars.push(guitar);
   }

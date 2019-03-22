@@ -13,6 +13,11 @@ yarn add --dev jest
 yarn add --dev ts-jest @types/jest
 yarn ts-jest config:init
  "scripts": {
-    "build": "tsc 0-hello/hello.ts",
     "test": "jest"
   },
+https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb
+yarn add eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --dev
+.eslintrc.js
+yarn add prettier eslint-config-prettier eslint-plugin-prettier --dev
+.pretierrc.js
+settings.json
