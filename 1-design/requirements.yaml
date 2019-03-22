@@ -1,0 +1,21 @@
+# legacy
+Scenario: Should find a guitar by its serial number
+  Given: An inventory of guitars
+  When: We search for serialnumber
+  Then: We get a guitarr or null
+---
+Scenario: Should search for guitars based on criteria
+  Given: An inventory of guitars
+  When: We search for a multiple criteria
+  Then: We get a list of guitarrs matching criteria
+---
+# modified
+Scenario: Should search for guitars based on optional criteria
+  Given: An inventory of guitars
+  When: We search for a criteria
+  Then: We get a list of guitars matching criteria
+---
+Scenario: Should search for guitars avoiding user mistakes
+  Given: An inventory of guitars
+  When: We search for criteria
+  Then: We get a list of guitars matching criteria

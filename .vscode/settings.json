@@ -1,0 +1,20 @@
+{
+    "workbench.colorCustomizations": {
+        "editorError.foreground": "#ff9900",
+        "editorWarning.foreground": "#ffff99",
+        "titleBar.activeBackground": "#007acc",
+        "titleBar.inactiveBackground": "#007acc99",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "spellright.language": [
+        "en",
+        "es"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "yaml"
+    ]
+}
