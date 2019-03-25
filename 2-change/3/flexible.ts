@@ -14,6 +14,7 @@ export enum Types {
 export enum Categories {
   Guitar = 'Guitar',
   Mandolin = 'Mandolin',
+  Banjo = 'Banjo',
 }
 
 export enum MandolinShapes {
@@ -21,23 +22,39 @@ export enum MandolinShapes {
   FStyle = 'F Style',
 }
 
-export abstract class InstrumentSpec {
+export enum Properties {
+  Model = 'model',
+  Builder = 'builder',
+  Type = 'type',
+  Numstrings = 'numstrings',
+  Shape = 'shape'
+}
+
+export type Values = Builders | Types | string | MandolinShapes;
+
+export type InstrumentProperties = Map<Properties, Values>;
+
+export class InstrumentSpec {
   public constructor(
-    public readonly builder: Builders | null,
-    public readonly model: string,
-    public readonly type: Types | null,
-    public readonly category: Categories | null,
+    public readonly category: Categories,
+    public readonly properties: InstrumentProperties = new Map<Properties, Values>(),
   ) {}
   public compare(target: InstrumentSpec): boolean {
-    if (target.model && target.model.toLocaleLowerCase() !== this.model.toLocaleLowerCase()) return false;
-    if (target.builder && target.builder !== this.builder) return false;
-    if (target.builder && target.type !== this.type) return false;
-    if (target.category && target.category !== this.category) return false;
-    return true;
+    if ( target.category && target.category !== this.category ) return false;
+    let matches = true;
+    target.properties.forEach( ( value, key ) => {
+      if ( this.properties.get(key) !== value ) {
+        matches = false;
+      }
+    });
+    return matches;
+  }
+  public set(property: Properties, value:Values) {
+    this.properties.set(property, value);
   }
 }
 
-export abstract class Instrument {
+export class Instrument {
   public constructor(
     public readonly serialNumber: string,
     public readonly price: number,
@@ -45,71 +62,15 @@ export abstract class Instrument {
   ) {}
 }
 
-export class GuitarSpec extends InstrumentSpec {
-  public constructor(
-    public readonly builder: Builders | null,
-    public readonly model: string,
-    public readonly type: Types | null,
-    public readonly numstrings: number | null = 6,
-    public readonly category: Categories = Categories.Guitar,
-  ) {
-    super(builder, model, type, category);
-  }
-
-  public compare(target: GuitarSpec): boolean {
-    const baseCompare = super.compare(target);
-    if (baseCompare === false) return false;
-    if (target.numstrings && target.numstrings !== this.numstrings) return false;
-    return true;
-  }
-}
-
-export class MandolinSpec extends InstrumentSpec {
-  public constructor(
-    public readonly builder: Builders | null,
-    public readonly model: string,
-    public readonly type: Types | null,
-    public readonly shape: MandolinShapes | null,
-    public readonly category: Categories = Categories.Mandolin,
-  ) {
-    super(builder, model, type, category);
-  }
-
-  public compare(target: MandolinSpec): boolean {
-    const baseCompare = super.compare(target);
-    if (baseCompare === false) return false;
-    if (target.shape && target.shape !== this.shape) return false;
-    return true;
-  }
-}
-
-export class Guitar extends Instrument {
-  public constructor(public readonly serialNumber: string, public readonly price: number, public readonly spec: GuitarSpec) {
-    super(serialNumber, price, spec);
-  }
-}
-
-export class Mandolin extends Instrument {
-  public constructor(public readonly serialNumber: string, public readonly price: number, public readonly spec: MandolinSpec) {
-    super(serialNumber, price, spec);
-  }
-}
-
 export class Inventory {
   private instruments: Instrument[];
   public constructor() {
     this.instruments = [];
   }
-  public addInstrument(serialNumber: string, price: number, spec: InstrumentSpec): void {
-    let instrument: Instrument | null = null;
-    if (spec instanceof GuitarSpec) {
-      instrument = new Guitar(serialNumber, price, spec);
-    } else if (spec instanceof MandolinSpec) {
-      instrument = new Mandolin(serialNumber, price, spec);
-    }
-    if (instrument) {
-      this.instruments.push(instrument);
-    }
+  public addInstrument(serialNumber: string, price: number, spec: InstrumentSpec): Instrument {
+    let instrument: Instrument = new Instrument(serialNumber,price, spec);
+    this.instruments.push( instrument );
+    return instrument;
   }
   public getInstrument(serialNumber: string): Instrument | undefined {
     return this.instruments.find(guitar => guitar.serialNumber === serialNumber);

@@ -1,6 +1,6 @@
 import { Builders, GuitarSpec, Inventory, Types } from './inheritance';
 
-describe('Inheritance instrument inventory', () => {
+describe('#2.1 Inheritance instrument inventory', () => {
   const inventory = new Inventory();
   beforeAll(() => {
     inventory.addInstrument('123-456', 1000, new GuitarSpec(Builders.Fender, 'Strotocaster', Types.Electric));

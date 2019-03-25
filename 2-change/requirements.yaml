@@ -33,9 +33,19 @@ Scenario: 1.5 Should search for number of strings
 Scenario: 2.1 Should support for mandolins
   Given: An inventory of guitars
   When: We can add mandolines
-  Then: We guitars and mandollines
+  Then: We have guitars and mandolins
 
 Scenario: 2.2 Should search for mandolins
   Given: An inventory of guitars and mandolins
   When: We search for mandolins
   Then: We get a list of mandolins
+# Flexible
+Scenario: 2.3 Should support for banjos
+  Given: An inventory of guitars
+  When: We can add banjos
+  Then: We guitars, mandolins and banjos
+
+Scenario: 2.4 Should search for banjos
+  Given: An inventory of guitars and banjos
+  When: We search for banjos
+  Then: We get a list of banjos

@@ -1,6 +1,6 @@
-import { Builders, GuitarSpec, Inventory, MandolinShapes, MandolinSpec, Types } from './cost';
+import { Builders, GuitarSpec, Inventory, MandolinShapes, MandolinSpec, Types } from './rigid';
 
-describe('Inheritance guitar and mandoline inventory', () => {
+describe('#2.2 Rigid Inheritance guitar and mandoline inventory', () => {
   const inventory = new Inventory();
   beforeAll(() => {
     inventory.addInstrument('123-456', 1000, new GuitarSpec(Builders.Fender, 'Strotocaster', Types.Electric));
