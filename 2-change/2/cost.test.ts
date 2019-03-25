@@ -1,4 +1,4 @@
-import { Builders, GuitarSpec, Inventory, Types } from './cost';
+import { Builders, GuitarSpec, Inventory, MandolinShapes, MandolinSpec, Types } from './cost';
 
 describe('Inheritance guitar and mandoline inventory', () => {
   const inventory = new Inventory();
@@ -38,5 +38,17 @@ describe('Inheritance guitar and mandoline inventory', () => {
     wantedGuitar = new GuitarSpec(Builders.Gibson, '', Types.Electric);
     finded = inventory.search(wantedGuitar);
     expect(finded && finded.length).toBe(2);
+  });
+  it('Should support for mandolins', () => {
+    const serialNumber = 'm95-78';
+    const mandolineSpec = new MandolinSpec(Builders.Eastman, 'MD-315', Types.Electric, MandolinShapes.FStyle);
+    inventory.addInstrument(serialNumber, 560, mandolineSpec);
+    const finded = inventory.getInstrument(serialNumber);
+    expect(finded && finded.serialNumber).toBe(serialNumber);
+  });
+  it(' Should search for mandolins', () => {
+    let wantedMandolin = new MandolinSpec(null, '', null, null);
+    let finded = inventory.search(wantedMandolin);
+    expect(finded && finded.length).toBe(1);
   });
 });

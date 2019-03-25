@@ -2,7 +2,7 @@
 Scenario: Should find a guitar by its serial number
   Given: An inventory of guitars
   When: We search for serialnumber
-  Then: We get a guitarr or null
+  Then: We get a guitar or null
 
 Scenario: Should search for guitars based on criteria
   Given: An inventory of guitars
