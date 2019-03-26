@@ -49,7 +49,6 @@ describe('#2.2 Rigid Inheritance guitar and mandoline inventory', () => {
   it('2.2 Should search for mandolins', () => {
     let wantedMandolin = new MandolinSpec(null, '', null, MandolinShapes.FStyle);
     let finded = inventory.search( wantedMandolin );
-    console.log( finded );
     expect(finded && finded.length).toBe(1);
   });
 });

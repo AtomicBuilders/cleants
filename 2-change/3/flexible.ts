@@ -38,7 +38,8 @@ export class InstrumentSpec {
   public constructor(
     public readonly category: Categories,
     public readonly properties: InstrumentProperties = new Map<Properties, Values>(),
-  ) {}
+  ) { }
+
   public compare(target: InstrumentSpec): boolean {
     if ( target.category && target.category !== this.category ) return false;
     let matches = true;
@@ -64,9 +65,11 @@ export class Instrument {
 
 export class Inventory {
   private instruments: Instrument[];
+
   public constructor() {
     this.instruments = [];
   }
+
   public addInstrument(serialNumber: string, price: number, spec: InstrumentSpec): Instrument {
     let instrument: Instrument = new Instrument(serialNumber,price, spec);
     this.instruments.push( instrument );

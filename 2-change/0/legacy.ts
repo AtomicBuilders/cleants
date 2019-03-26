@@ -33,9 +33,11 @@ export class Guitar {
 
 export class Inventory {
   private guitars: Guitar[];
+
   public constructor() {
     this.guitars = [];
   }
+
   public addGuitar(serialNumber: string, price: number, spec: GuitarSpec): void {
     const guitar = new Guitar(serialNumber, price, spec);
     this.guitars.push(guitar);

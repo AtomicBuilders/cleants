@@ -87,7 +87,6 @@ describe('#2.3 Flexible guitar, mandoline, banjo... inventory', () => {
     const wantedMandolin = new InstrumentSpec(Categories.Mandolin);
     wantedMandolin.set(Properties.Shape, MandolinShapes.FStyle);
     let finded = inventory.search(wantedMandolin);
-    console.log(finded);
     expect(finded && finded.length).toBe(1);
   });
   it('2.3 Should support for banjos', () => {
@@ -105,7 +104,6 @@ describe('#2.3 Flexible guitar, mandoline, banjo... inventory', () => {
     const wantedBanjo = new InstrumentSpec(Categories.Banjo);
     wantedBanjo.set(Properties.Builder, Builders.Gibson);
     let finded = inventory.search(wantedBanjo);
-    console.log(finded);
     expect(finded && finded.length).toBe(1);
   });
 });
