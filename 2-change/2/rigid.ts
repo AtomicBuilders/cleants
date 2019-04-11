@@ -27,7 +27,8 @@ export abstract class InstrumentSpec {
     public readonly model: string,
     public readonly type: Types | null,
     public readonly category: Categories | null,
-  ) {}
+  ) { }
+
   public compare(target: InstrumentSpec): boolean {
     if (target.model && target.model.toLocaleLowerCase() !== this.model.toLocaleLowerCase()) return false;
     if (target.builder && target.builder !== this.builder) return false;
@@ -97,9 +98,11 @@ export class Mandolin extends Instrument {
 
 export class Inventory {
   private instruments: Instrument[];
+
   public constructor() {
     this.instruments = [];
   }
+
   public addInstrument(serialNumber: string, price: number, spec: InstrumentSpec): void {
     let instrument: Instrument | null = null;
     if (spec instanceof GuitarSpec) {

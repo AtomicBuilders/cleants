@@ -1,41 +1,51 @@
 # 1 - design
-Scenario: Should find a guitar by its serial number
+Scenario: 1.1 Should find a guitar by its serial number
   Given: An inventory of guitars
   When: We search for serialnumber
   Then: We get a guitar or null
 
-Scenario: Should search for guitars based on criteria
+Scenario: 1.2 Should search for guitars based on criteria
   Given: An inventory of guitars
   When: We search for a multiple criteria
   Then: We get a list of guitarrs matching criteria
 
-Scenario: Should search for guitars based on optional criteria
+Scenario: 1.3 Should search for guitars based on optional criteria
   Given: An inventory of guitars
   When: We search for a criteria
   Then: We get a list of guitars matching criteria
 
-Scenario: Should search for guitars avoiding user mistakes
+Scenario: 1.4 Should search for guitars avoiding user mistakes
   Given: An inventory of guitars
   When: We search for criteria
   Then: We get a list of guitars matching criteria
 
-Scenario: Should have numberOfStrings in specs
+Scenario: 1.5 Should have numberOfStrings in specs
   Given: An inventory of guitars
   When: We have 6-string or 12-string guitars
   Then: We can add them
 
-Scenario: Should search for number of strings
+Scenario: 1.5 Should search for number of strings
   Given: An inventory of guitars
   When: We search for 6-string or 12-string guitars
   Then: We get a list of guitars matching criteria
 ---
 # change
-Scenario: Should support for mandolins
+Scenario: 2.1 Should support for mandolins
   Given: An inventory of guitars
   When: We can add mandolines
-  Then: We guitars and mandollines
+  Then: We have guitars and mandolins
 
-Scenario: Should search for mandolins
+Scenario: 2.2 Should search for mandolins
   Given: An inventory of guitars and mandolins
   When: We search for mandolins
   Then: We get a list of mandolins
+# Flexible
+Scenario: 2.3 Should support for banjos
+  Given: An inventory of guitars
+  When: We can add banjos
+  Then: We guitars, mandolins and banjos
+
+Scenario: 2.4 Should search for banjos
+  Given: An inventory of guitars and banjos
+  When: We search for banjos
+  Then: We get a list of banjos

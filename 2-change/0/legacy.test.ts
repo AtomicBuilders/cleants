@@ -1,6 +1,6 @@
 import { Builders, GuitarSpec, Inventory, Types } from './legacy';
 
-describe('Legacy guitar and mandoline inventory', () => {
+describe('#2.0 Legacy guitar and mandoline inventory', () => {
   const inventory = new Inventory();
   beforeAll(() => {
     inventory.addGuitar('123-456', 1000, new GuitarSpec(Builders.Fender, 'Strotocaster', Types.Electric));
